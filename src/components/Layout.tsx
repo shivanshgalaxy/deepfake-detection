@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { NavigationMenu, NavigationMenuItem, NavigationMenuList, NavigationMenuLink } from "@/components/ui/navigation-menu";
 
@@ -15,31 +15,55 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 <div className="container mx-auto flex justify-between items-center">
                     {/* Brand */}
                     <div className="text-2xl font-bold">
-                        <Link to="/" className="text-white">OmGuard</Link>
+                        <NavLink to="/" className="text-white">OmGuard</NavLink>
                     </div>
 
                     {/* Navigation Menu */}
                     <NavigationMenu>
                         <NavigationMenuList className="flex space-x-6">
                             <NavigationMenuItem>
-                                <Link to="/" className="text-white hover:text-zinc-400">
-                                    <NavigationMenuLink className="text-zinc-400">Dashboard</NavigationMenuLink>
-                                </Link>
+                                <NavLink to="/">
+                                    {({ isActive }) => (
+                                        <NavigationMenuLink
+                                            className={`${isActive ? "text-white" : "text-zinc-400"} hover:text-white`}
+                                        >
+                                            Dashboard
+                                        </NavigationMenuLink>
+                                    )}
+                                </NavLink>
                             </NavigationMenuItem>
                             <NavigationMenuItem>
-                                <Link to="/analytics" className="text-white hover:text-zinc-400">
-                                    <NavigationMenuLink className="text-zinc-400">Analytics</NavigationMenuLink>
-                                </Link>
+                                <NavLink to="/analytics">
+                                    {({ isActive }) => (
+                                        <NavigationMenuLink
+                                            className={`${isActive ? "text-white" : "text-zinc-400"} hover:text-white`}
+                                        >
+                                            Analytics
+                                        </NavigationMenuLink>
+                                    )}
+                                </NavLink>
                             </NavigationMenuItem>
                             <NavigationMenuItem>
-                                <Link to="/users" className="text-white hover:text-zinc-400">
-                                    <NavigationMenuLink className="text-zinc-400">Profile</NavigationMenuLink>
-                                </Link>
+                                <NavLink to="/users">
+                                    {({ isActive }) => (
+                                        <NavigationMenuLink
+                                            className={`${isActive ? "text-white" : "text-zinc-400"} hover:text-white`}
+                                        >
+                                            Profile
+                                        </NavigationMenuLink>
+                                    )}
+                                </NavLink>
                             </NavigationMenuItem>
                             <NavigationMenuItem>
-                                <Link to="/notifications" className="text-white hover:text-zinc-400">
-                                    <NavigationMenuLink className="text-zinc-400">Notifications</NavigationMenuLink>
-                                </Link>
+                                <NavLink to="/notifications">
+                                    {({ isActive }) => (
+                                        <NavigationMenuLink
+                                            className={`${isActive ? "text-white" : "text-zinc-400"} hover:text-white`}
+                                        >
+                                            Notifications
+                                        </NavigationMenuLink>
+                                    )}
+                                </NavLink>
                             </NavigationMenuItem>
                         </NavigationMenuList>
                     </NavigationMenu>
